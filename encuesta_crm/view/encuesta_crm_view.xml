@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="encuesta_crm_view" model="ir.ui.view">
+            <field name="name">res.partner_encuesta_crm_view.inherited</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"></field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='website']" position="after">
+                    <field name="x_cmt_cualessuactividadprincipal" />
+                    <field name="x_perfilconfirmado" />
+                    <field name="x_cmt_medioseentero" />
+                    <field name="x_region"/>
+                </xpath>
+                <xpath expr="//field[@name='lang']" position="after">
+                    <field name="x_tipoDeCliente" />
+                </xpath>
+                <notebook position="inside">
+                    <page string="INFORMACIÓN COMPLEMENTARIA">
+                        <group>
+                        <group string="INFORMACION">
+                            <field name="x_cmt_productosquproduceoalm" widget="Many2one"/>
+                            <field name="x_cmt_certifi" widget="Many2one"/>
+                            <field name="x_cmt_nivelvendesuproducto" widget="Many2one"/>
+                        </group>
+                        <group string=" ">
+                        </group>
+                        </group>
+                         <!--   <field name="x_"/>
+                            <br/>
+
+                            <label for="x_navintha_documentos_comprobantedomicilio"/>
+                            <field name="x_navintha_documentos_comprobantedomicilio"/>
+                            <br/>
+ 
+                            <label for="x_navintha_documentos_curp"/>
+                            <field name="x_navintha_documentos_curp"/>
+                            <br/>
+
+                            <label for="x_navintha_documentos_cv"/>
+                            <field name="x_navintha_documentos_cv"/>
+                            <br/>
+
+                            <label for="x_navintha_documentos_comprobanteestudios"/>
+                            <field name="x_navintha_documentos_comprobanteestudios"/>-->
+                       <!-- </div>-->
+                    </page>                   
+                </notebook>
+            </field>
+        </record>
+    </data>
+</odoo>
