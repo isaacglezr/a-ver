@@ -18,12 +18,13 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['crm'],
 
     # always loaded
     'data': [
         'view/encuesta_crm_view.xml',
-    ], 
+        'view/lead_fields_view.xml',
+    ],
     'installable':True,
     'auto_install':False,
 }

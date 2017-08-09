@@ -57,8 +57,10 @@ class Encuestas(models.Model):
     x_estadoslistas = fields.Selection([(1,'Aguascalientes'),(2,'Baja California Norte'),(3,'Baja California Sur'),(4,'Campeche'),(5,'Coahuila'),(6,'Colima'),(7,'Chiapas'),(8,'Chihuahua'),(9,'Distrito Federal'),(10,'Durango'),(11,'Guanajuato'),(12,'Guerrero'),(13,'Hidalgo'),(14,'Jalisco'),(15,'México'),(16,'Michoacán'),(17,'Morelos'),(18,'Nayarit'),(19,'Nuevo León'),(20,'Oaxaca'),(21,'Puebla'),(22,'Querétaro'),(23,'Quintana Roo'),(24,'San Luis Potosí'),(25,'Sinaloa'),(26,'Sonora'),(27,'Tabasco'),(28,'Tamaulipas'),(29,'Tlaxcala'),(30,'Veracruz'),(31,'Yucatán'),(32,'Zacatecas')], string="Estado en el que vende")
     x_giroprincipal = fields.Selection([(20,'Usuario final'),(30,'Proyectista'),(40,'Profesional Técnico'),(50,'Contratista'),(60,'Distribuidor'),(70,'Fabricante'),(80,'Agente de Negocios')], string="Actividad o Giro Principal de la Empresa")
     x_sitioWebVerificado = fields.Boolean(string="Sitio Web Verificado")
+    x_tiposdebienesque = fields.Many2one('x_tiposdebienesque', string="¿Qué tipo de bienes produce")
     x_tipoDeCliente = fields.Selection([(1,'Platino'),(1,'Oro'),(1,'Plata')], string="Calificación del Cliente:")
-    x_perfilconfirmado = fields.Text(string="Perfil del cliente", compute='_fijar_perfil_cliente')
+    x_tipodeclientesatiende = fields.Many2one('x_tipodeclientesatiende', string="¿A qué tipo de clientes atiende principalmente?")
+    x_perfilconfirmado = fields.Text(string="Perfil Confirmado", compute='_fijar_perfil_cliente')
     x_region = fields.Char(string="Region", compute='_cambio_region')
 
 
@@ -154,7 +156,7 @@ class Encuestas(models.Model):
 	                record['x_perfilconfirmado'] = "Pendiente"
 	#Usuario Final
 	    elif (self.x_cmt_cualessuactividadprincipal == 10):
-	        if(self.x_cmt_productosquproduceoalm.x_name == "Ninguno"):
+	        if(self.x_cmt_productosquproduceoalm.name == "Ninguno"):
 	            record['x_perfilconfirmado'] = "Ninguno"
 	        else:
 	            record['x_perfilconfirmado'] = "Usuario Final"
